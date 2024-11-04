@@ -1,0 +1,131 @@
+@charset "utf-8";
+@import "./default.css";
+@font-face {
+    font-family: 'RiaSans-ExtraBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/RiaSans-ExtraBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+:root{
+    --point-font:'RiaSans-ExtraBold';
+    --default-font:'GmarketSansMedium';
+    --black:#151515;
+    --white:#F8F8F8;
+    --yellow:#FFB426;
+    --navy: #192C6A;
+}
+body{
+    background: var(--black); color: var(--white); overflow-x: hidden;
+}
+#intro{
+    height: 100vh; 
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10em; font-family: var(--point-font);
+}
+#white, #black{
+    height: 100vh; background: var(--white); color: var(--black); 
+    font-size: 5em; font-weight: bold; font-family: var(--point-font);
+    display: flex; align-items: center; flex-direction: column; justify-content: center;
+    text-align: center;
+}
+#white .navy{ color: var(--navy);}
+#black{ background: var(--black); color: var(--white);}
+#black .yellow{ color: var(--yellow);}
+#intro .scroll-white, #black .scroll-white, #white .scroll-black{
+    background: url('../imgs/scroll_black.png') no-repeat top center/cover; font-size: 16px;
+    background-size: 70px; position: absolute; bottom: 10%; padding-top: 80px;
+}
+#intro .scroll-white, #black .scroll-white{ background-image: url('../imgs/scroll_white.png');}
+.t2, .t5{ min-width: 400px;}
+
+/* -------------------- website ---------------------  */
+
+#website {
+    overscroll-behavior: none; width: 400%; height: 100vh; 
+    display: flex; flex-wrap: nowrap; position: relative;
+}
+#website .header{ 
+    position: absolute; left: 10%; top: 7%; 
+    font-size: 4em; font-weight: bold; font-family: var(--point-font);
+}
+#website .title{ 
+    position: absolute; left: 3.8%; top: 17%; font-size: 1.4em; padding: 16px 20px; 
+    background: var(--yellow); color: var(--black); border-radius: 24px;
+    font-family: var(--point-font);
+}
+.project{
+    width: 100%; height: 100vh; position: relative; font-family: var(--default-font);
+    display: flex; align-items: center; justify-content: center;
+}
+.project>.inner, .side-item .inner{
+    width: 60%; height: 70%; background: #d9d9d9; border-radius: 20px;
+    display: flex; align-items: center; margin-top: 12%; padding: 40px;
+}
+.project .text-wrap, .side-item .text-wrap{
+    color: var(--black); height: 90%; width: 40%;
+    display: flex; flex-direction: column; justify-content: space-between; 
+}
+.project .text-wrap>span, .side-item .text-wrap>span{ font-weight: bold; font-size: 1.6em;}
+.project .website-name, .side-item .website-name{ font-weight: bold; font-size: 2.6em; font-family: var(--point-font);}
+.project .tags>span, .side-item .tags>span{ padding-right: 14px;}
+.project .description, .side-item .description{ line-height: 2em; }
+.project .info, .side-item .info{
+    display: flex; height: 30%; width: 80%; flex-wrap: wrap; align-items: center;
+}
+.project .info>dt, .side-item .info>dt{ width: 30%; font-size: 1.1em;}
+.project .info>dd, .side-item .info>dd{ font-size: 1.1em; width: 70%; letter-spacing: .12em;}
+.project .info ul, .side-item .info ul{ display: flex; gap: 14px; }
+.project .info ul>li, .side-item .info ul>li{
+    text-indent: -9999px; background: url('../imgs/icon_figma.png') no-repeat center/cover;
+    width: 42px; height: 42px;
+}
+.project .info ul .html5, .side-item .info ul .html5{ background-image: url('../imgs/icon_html5.png');}
+.project .info ul .css, .side-item .info ul .css{ background-image: url('../imgs/icon_css.png');}
+.project .info ul .javascript, .side-item .info ul .javascript{ background-image: url('../imgs/icon_javascript.png');}
+
+.project .photo-wrap,.side-item .photo-wrap{ 
+    height: 90%; width: 60%; display: flex; flex-direction: column; 
+    justify-content: space-evenly; align-items: center;
+}
+.project .photo-wrap .main-visual img, .side-item .photo-wrap .main-visual img{ width: 100%; height: 100%; object-fit: cover;}
+.project .photo-wrap .links, .side-item .links{
+    display: flex; justify-content: center; gap: 24px;
+}
+.project .photo-wrap .links a, .side-item .links a{ 
+    color: var(--black); display: block; padding: 14px 20px; 
+    background: var(--yellow); border-radius: 16px;
+}
+
+/* -------------------- side project ---------------------  */
+
+#side-project{ overflow: hidden; }
+#side-project .title{
+    background: var(--navy); color: var(--white);
+    padding: 20px 24px; font-size: 1.4em; border-radius: 24px;
+    font-family: var(--point-font); width: 14%; text-align: center;
+}
+.side-item{
+    position: relative; align-items: center;
+    display: flex; justify-content: center; flex-direction: column;
+    background: var(--black); width: 100%; height: 100vh;
+}
+.side-item .inner{
+    align-items: center; justify-content: space-around;
+    background: none; color: var(--white); width: 100%;
+    margin-top: 0;
+}
+.side-item .text-wrap{ color: var(--white);}
+.side-item .links{ justify-content: flex-start;}
+.side-item .links a{ background: var(--navy); color: var(--white);}
+
+/* ----------------------- about me ---------------------- */
+#about-me{
+    width: 100%; height: 100vh; background: var(--white);
+}
+#about-me img{ width: 40px; height: auto;}
