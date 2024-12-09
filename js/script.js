@@ -1,3 +1,6 @@
+/**/
+let tops = [];
+
 // 텍스트 확대하기
 const intro = gsap.timeline();
 intro.to("#intro span", { scale: 60, duration: 2 })
@@ -57,23 +60,58 @@ gsap.to(projects, {
         scrub: 1,
         snap: 1 / (projects.length - 1),
         end: "+=7000"
-        // end: document.querySelector("#parallax__cont").offsetWidth
+        // end: document.querySelector(".project").offsetWidth  
     }
 });
 
 // 배경 고정
-let panels = gsap.utils.toArray(".side-item");
-let tops = panels.map(panel => ScrollTrigger.create({ trigger: panel, start: "top top" }));
+/*
+end: () => `+=${project.offsetHeight - window.innerHeight + (i === sideProjects.length - 1 ? 0 : 100)}`,
 
-panels.forEach((panel, i) => {
-    ScrollTrigger.create({
-        trigger: panel,
-        start: () => panel.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
-        pin: true,
-        pinSpacing: false
-    });
+let sideProjects = gsap.utils.toArray("#side-project .side-item");
+
+sideProjects.forEach((project, i) => {
+  ScrollTrigger.create({
+    trigger: project,
+    start: () => project.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+    
+    pin: true,
+    pinSpacing: false,
+    onEnter: () => {
+      let aboutMeSection = document.querySelector("#about-me");
+      ScrollTrigger.get(aboutMeSection).scrollable();
+    },
+    onLeave: () => {
+      let aboutMeSection = document.querySelector("#about-me");
+      ScrollTrigger.get(aboutMeSection).pin();
+    }
+  });
+  
 });
+*/
+let sideProjects = gsap.utils.toArray("#side-project .side-item");
+sideProjects.forEach((project, i) => {
+    ScrollTrigger.matchMedia({
+      "(min-width: 768px)": () => {
+        ScrollTrigger.create({
+          trigger: project,
+          start: () => project.offsetHeight < window.innerHeight ? "top top" : "bottom bottom",
+          pin: true,
+          pinSpacing: false,
+          onEnter: () => {
+            let aboutMeSection = document.querySelector("#about-me");
+            aboutMeSection.classList.add("scrollable");
+          },
+          onLeave: () => {
+            let aboutMeSection = document.querySelector("#about-me");
+            aboutMeSection.classList.remove("scrollable");
+          }
+        });
+      }
+    });
+  });
 
+  /** */
 ScrollTrigger.create({
     snap: {
         snapTo: (progress, self) => {
